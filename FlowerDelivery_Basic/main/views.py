@@ -3,6 +3,8 @@ from django.contrib.auth import login, authenticate
 from .forms import UserRegistrationForm, OrderForm
 from .models import Flower, Order
 from django.contrib.auth.decorators import login_required
+from aiogram import Bot
+import asyncio
 
 def register(request):
     if request.method == 'POST':
@@ -15,11 +17,11 @@ def register(request):
             return redirect('catalog')
     else:
         form = UserRegistrationForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'main/register.html', {'form': form})
 
 def catalog(request):
     flowers = Flower.objects.all()
-    return render(request, 'catalog.html', {'flowers': flowers})
+    return render(request, 'main/catalog.html', {'flowers': flowers})
 
 @login_required
 def order(request):
@@ -30,11 +32,18 @@ def order(request):
             order.user = request.user
             order.save()
             form.save_m2m()
-            # Add Telegram bot integration here
+            send_order_to_telegram(order)
             return redirect('order_success')
     else:
         form = OrderForm()
-    return render(request, 'order.html', {'form': form})
+    return render(request, 'main/order.html', {'form': form})
 
 def order_success(request):
-    return render(request, 'order_success.html')
+    return render(request, 'main/order_success.html')
+
+def send_order_to_telegram(order):
+    bot_token = 'AAGb1uvxXNOOa8JacOnuNSqcCKx1BdjRiJI'
+    chat_id = 'BunchMag_bot'
+    bot = Bot(token=bot_token)
+    message = f"New order from {order.user.username}\nFlowers: {[flower.name for flower in order.flowers.all()]}"
+    asyncio.run(bot.send_message(chat_id=chat_id, text=message))
