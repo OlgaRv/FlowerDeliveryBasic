@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catalog</title>
+</head>
+<body>
+    <h2>Catalog</h2>
+    <ul>
+        {% for flower in flowers %}
+            <li>{{ flower.name }} - ${{ flower.price }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'order' %}">Place an Order</a>
+</body>
+</html>
