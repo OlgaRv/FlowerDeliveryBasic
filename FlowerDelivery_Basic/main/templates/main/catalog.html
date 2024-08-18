@@ -1,15 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Catalog</title>
-</head>
-<body>
-    <h2>Catalog</h2>
-    <ul>
-        {% for flower in flowers %}
-            <li>{{ flower.name }} - ${{ flower.price }}</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'order' %}">Place an Order</a>
-</body>
-</html>
+<!-- main/templates/main/catalog.html -->
+{% extends 'main/base.html' %}
+
+{% block title %}Каталог цветов{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="content-inner">
+        <h1>Каталог цветов</h1>
+
+        <div class="row">
+            {% for flower in flowers %}
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="card">
+                        <img src="{{ flower.image.url }}" class="card-img-top" alt="{{ flower.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ flower.name }}</h5>
+                            <p class="card-text">Цена: {{ flower.price }} руб.</p>
+                            {% if user.is_authenticated %}
+                                <form action="{% url 'order' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="flower" value="{{ flower.id }}">
+                                    <input type="number" name="quantity" class="form-control mb-2" min="1" value="1" required>
+                                    <button type="submit" class="btn btn-primary">Добавить в заказ</button>
+                                </form>
+                            {% else %}
+                                <a href="{% url 'login' %}?next={% url 'catalog' %}" class="btn btn-primary">Подтвердите ваш логин</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+

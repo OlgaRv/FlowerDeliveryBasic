@@ -1,0 +1,16 @@
+<!-- main/templates/main/account.html -->
+
+
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Магазин цветов{% endblock %}
+
+{% block content %}
+    <h1>Добро пожаловать в Ваш личный кабинет!</h1>
+
+    <div class="content">
+        <a href="{% url 'all_orders' %}" class="btn btn-primary">Список оформленных заказов</a>
+    </div>
+
+{% endblock %}

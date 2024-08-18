@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Order Success</title>
-</head>
-<body>
-    <h2>Order placed successfully!</h2>
-    <a href="{% url 'catalog' %}">Back to Catalog</a>
-</body>
-</html>
+<!-- main/templates/main/order_success.html -->
+
+{% extends 'main/base.html' %}
+
+{% block title %}Успешный заказ{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Ваш заказ успешно создан!</h2>
+    <p>Благодарим за заказ. Вот детали вашего заказа:</p>
+    <ul>
+        <li>Букет: {{ order.flower.name }}</li>
+        <li>Количество: {{ order.quantity }}</li>
+        <li>Общая стоимость: {{ order.total_price }} ₽</li>
+    </ul>
+    <a href="{% url 'catalog' %}" class="btn btn-primary mt-3">Вернуться в каталог</a>
+</div>
+{% endblock %}
+
+
+

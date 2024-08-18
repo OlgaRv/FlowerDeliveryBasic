@@ -1,0 +1,182 @@
+        /* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Заголовок каталога */
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #4CAF50; /* Цвет заголовка */
+}
+
+        .sidebar {
+            width: 250px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            height: 100vh; /* Высота меню на весь экран */
+            position: fixed;
+        }
+
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .sidebar .image-container {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .image-container img {
+            width: 100%;
+            border-radius: 50%; /* Овал */
+            object-fit: cover;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #007bff;
+            padding: 10px 0;
+            display: block;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #e9ecef;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+        }
+
+/* Список цветов */
+.flower-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Элемент цветка */
+.flower-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.flower-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Название цветка */
+.flower-item h2 {
+    font-size: 15px;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+/* Цена цветка */
+.flower-item img {
+    max-width: 100%;
+    border-radius: 8px; /* или уберите вовсе */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Общий стиль для контейнера контента */
+.content {
+    margin-left: 150px; /* Оставляем место для меню */
+    padding: 20px;
+    height: 100vh; /* Высота на весь экран */
+    box-sizing: border-box;
+}
+
+/* Контейнер для внутреннего содержимого */
+.content-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Стили для заголовка */
+.content-inner h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #32CD32;
+    width: 100%;
+}
+
+/* Контейнер для карточек */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Равномерное распределение карточек */
+    width: 100%;
+}
+
+/* Стили для карточек */
+.col-6.col-md-4.col-lg-2 {
+    flex: 0 0 20%; /* 20% ширины для 5 карточек в ряд */
+    max-width: 20%;
+    box-sizing: border-box;
+    padding: 10px; /* Внутренние отступы между карточками */
+}
+
+.card-img-top {
+    object-fit: contain; /* Сохраняет изображение целиком */
+    max-height: 200px; /* Ограничение максимальной высоты изображения */
+    width: 100%; /* Занимает всю ширину карточки */
+}
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%; /* Карточка занимает всю доступную высоту */
+    display: flex;
+    flex-direction: column; /* Гибкое расположение элементов внутри карточки */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1; /* Контент внутри body растягивается */
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.container-fluid {
+    padding-left: 0; /* Убираем отступы контейнера для полного использования ширины */
+}
+
+
